@@ -14,6 +14,15 @@
                 <dt>Titre</dt>
                 <dd>{{ $track->title }}</dd>
 
+                <dt>Catégorie</dt>
+                <dd>
+                    @if($track->category)
+                        <a href="{{ route('app.categories.show', ['category' => $track->category->id]) }}" class="link">{{ $track->category->name }}</a>
+                    @else
+                        <span>Non catégorisé</span>
+                    @endif
+                </dd>
+
                 <dt>Contributeur</dt>
                 <dd class="flex-center">
                     <x-avatar size="medium" :src="$track->user->avatar" /> {{ $track->user->username }}

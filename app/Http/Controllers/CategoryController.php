@@ -19,7 +19,7 @@ class CategoryController extends Controller
             ->with(['week', 'user'])
             ->withCount('likes')
             ->orderByDesc('likes_count')
-            ->paginate(20);
+            ->paginate(10);
 
         return view('app.categories.show', compact('category', 'tracks'));
     }
