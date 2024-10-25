@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Week;
 use Illuminate\Database\Migrations\Migration;

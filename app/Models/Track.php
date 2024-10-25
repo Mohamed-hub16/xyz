@@ -58,6 +58,11 @@ class Track extends Model
             ->whereRelation('week', 'week_number', date('W'));
     }
 
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     /**
      * Get tracks ranking.
      */
@@ -67,4 +72,5 @@ class Track extends Model
             ->orderBy('likes_count', 'desc')
             ->orderBy('created_at', 'asc');
     }
+
 }
