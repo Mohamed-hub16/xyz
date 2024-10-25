@@ -18,8 +18,6 @@ class DatabaseSeeder extends Seeder
         // Create weeks
         $this->call(WeekSeeder::class);
 
-        $this->call(CategorySeeder::class);
-
         // Create content
         User::factory()
             ->count(15)
@@ -35,5 +33,10 @@ class DatabaseSeeder extends Seeder
                 return ['email' => "user{$id}@example.com"];
             })
             ->create();
+
+        $this->call([
+            // ... other seeders
+            CategorySeeder::class,
+        ]);
     }
 }

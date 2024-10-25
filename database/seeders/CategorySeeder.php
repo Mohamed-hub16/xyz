@@ -2,16 +2,13 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\Category;
+use App\Models\Track;
+use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run()
+    public function run(): void
     {
         $categories = [
             'Soul',
@@ -27,6 +24,16 @@ class CategorySeeder extends Seeder
 
         foreach ($categories as $category) {
             Category::create(['name' => $category]);
+        }
+
+        $tracksWithoutCategory = Track::whereNull('category_id')->get();
+
+        $categories = Category::all();
+
+        foreach ($tracksWithoutCategory as $track) {
+            $randomCategory = $categories->random();
+            $track->category()->associate($randomCategory);
+            $track->save();
         }
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Category;
 use App\Models\Week;
 use Database\Samples\TrackSamples;
 use Illuminate\Database\Eloquent\Factories\Factory;
